@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FreshBite Cafe</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link href="/style.css" rel="stylesheet" />
+    <script src="/script.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <img
+              src="images/freshbite image.png"
+              alt="FreshBite Logo"
+              style="
+                height: 40px;
+                width: auto;
+                vertical-align: middle;
+                margin-right: 8px;
+              "
+            />
+            FreshBite Digital Cafe Menu
+            <!-- <img src="/images/freshbite image.png" > -->
+          </div>
+          <div class="nav-buttons">
+            <button id="customerViewBtn" class="btn btn-outline">
+              Customer Menu
+            </button>
+            <button id="staffViewBtn" class="btn btn-outline">
+              Staff Login
+            </button>
+            <button id="cartBtn" class="btn btn-primary cart-icon">
+              <i class="fas fa-shopping-cart"></i> Cart
+              <span id="cartCount" class="cart-count">0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Customer Menu Section -->
+      <section id="customerMenu" class="section active">
+        <div class="card">
+          <h2>Our Menu</h2>
+          <div class="search-bar">
+            <input
+              type="text"
+              id="menuSearch"
+              placeholder="Search menu items..."
+            />
+          </div>
+
+          <div class="tabs">
+            <div class="tab active" data-category="all">All</div>
+            <div class="tab" data-category="drinks">Drinks</div>
+            <div class="tab" data-category="food">Food</div>
+            <div class="tab" data-category="desserts">Desserts</div>
+          </div>
+
+          <div id="menuItems" class="menu-grid">
+            <!-- Menu items will be dynamically loaded here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Staff Login Section -->
+      <section id="staffLogin" class="section">
+        <div class="login-container">
+          <div class="card">
+            <div class="login-header">
+              <h2>Staff Login</h2>
+              <p>Please enter your credentials to access the dashboard</p>
+            </div>
+            <form id="loginForm">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input
+                  type="text"
+                  id="username"
+                  class="form-control"
+                  placeholder="Enter your username"
+                />
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control"
+                  placeholder="Enter your password"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%">
+                Login
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Staff Dashboard Section -->
+      <section id="staffDashboard" class="section">
+        <div class="dashboard-header">
+          <h2>Staff Dashboard</h2>
+          <button id="logoutBtn" class="btn btn-danger">Logout</button>
+        </div>
+
+        <div class="card">
+          <h3>Add New Menu Item</h3>
+          <form id="addItemForm">
+            <div class="form-group">
+              <label for="itemName">Item Name</label>
+              <input
+                type="text"
+                id="itemName"
+                class="form-control"
+                placeholder="Enter item name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="itemPrice">Price (N)</label>
+              <input
+                type="number"
+                id="itemPrice"
+                class="form-control"
+                placeholder="0.00"
+                step="0.01"
+                min="0"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="itemDescription">Description</label>
+              <textarea
+                id="itemDescription"
+                class="form-control"
+                placeholder="Enter item description"
+                rows="3"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="itemCategory">Category</label>
+              <select id="itemCategory" class="form-control">
+                <option value="drinks">Drinks</option>
+                <option value="food">Food</option>
+                <option value="desserts">Desserts</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-success">Add Item</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Current Menu Items</h3>
+          <div id="staffMenuItems">
+            <!-- Menu items will be dynamically loaded here -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="cart-sidebar">
+      <div class="cart-header">
+        <h3>Your Order</h3>
+        <button id="closeCart" class="cart-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="cart-content" id="cartContent">
+        <!-- Cart items will be dynamically loaded here -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="cartTotal">$0.00</span>
+        </div>
+        <form id="checkoutForm" class="checkout-form">
+          <div class="form-group">
+            <label for="customerName">Your Name</label>
+            <input
+              type="text"
+              id="customerName"
+              class="form-control"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="tableNumber">Table Number</label>
+            <input
+              type="text"
+              id="tableNumber"
+              class="form-control"
+              placeholder="Enter your table number"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-success" style="width: 100%">
+            Place Order
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+  </body>
+</html>
