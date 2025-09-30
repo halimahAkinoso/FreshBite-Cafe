@@ -1,0 +1,24 @@
+         FRESHBITE CAFE
+FreshBite Owner says:
+"My paper menus get dirty and torn. I want a simple digital menu system where customers can see the menu on their phones and place orders. I also need my staff to update the menu easily without reprinting papers." 
+ We have the two menu:
+   . Staff Menu
+   .Customer Menu
+
+   Staff Menu Requirements are:
+   username:admin
+   password:cafe123
+   The Staff must be able to  Add new menu items (name, price, description)  
+ Remove existing menu items  
+ View all current menu items  
+ Simple form to edit prices.
+
+
+ Customer Menu will display all categories menu item available,so  the customer will be able to order by Click to add items to cart  
+ Show cart with item count and total  
+ Simple checkout form (name, table number)  
+ Order confirmation message.
+ Team Members and Their Roles:
+ Tijani Basit Abiodun: Worked  on Customer Menu system
+ Akinoso-Ibrahim Halimah: worked on the admin login and add items
+ Odeleye Rukayat Ajoke:  worked Ordering system 
