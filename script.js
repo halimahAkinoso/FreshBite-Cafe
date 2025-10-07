@@ -553,3 +553,59 @@
                 notification.classList.remove('show');
             }, 3000);
         }
+
+
+        // Simple examples for your café project
+
+// 1. Auto-hide success message
+function showSuccessMessage(message) {
+    let messageDiv = document.getElementById('successMessage');
+    messageDiv.textContent = message;
+    messageDiv.style.display = 'block';
+    
+    // Hide after 3 seconds
+    setTimeout(function() {
+        messageDiv.style.display = 'none';
+    }, 3000);
+}
+
+// 2. Order preparation timer
+function startOrderTimer(orderId, minutes) {
+    let seconds = minutes * 60;
+    
+    let orderInterval = setInterval(function() {
+        seconds--;
+        
+        let mins = Math.floor(seconds / 60);
+        let secs = seconds % 60;
+        
+        console.log(`Order ${orderId}: ${mins}:${secs} remaining`);
+        
+        if (seconds <= 0) {
+            clearInterval(orderInterval);
+            console.log(`Order ${orderId} is ready!`);
+            alert(`Order ${orderId} is ready for pickup!`);
+        }
+    }, 1000);
+}
+
+// 3. Auto-logout after inactivity
+let logoutTimer;
+
+function resetLogoutTimer() {
+    // Clear existing timer
+    clearTimeout(logoutTimer);
+    
+    // Set new timer (30 minutes)
+    logoutTimer = setTimeout(function() {
+        alert("You've been logged out due to inactivity");
+        // Add logout code here
+    }, 30 * 60 * 1000); // 30 minutes in milliseconds
+}
+
+// Reset timer on any user activity
+document.addEventListener('click', resetLogoutTimer);
+document.addEventListener('keypress', resetLogoutTimer);
+
+// Start the timer
+resetLogoutTimer();
